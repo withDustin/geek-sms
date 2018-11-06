@@ -1,1 +1,8 @@
-export default () => console.log('Hello world')
+import { ESMS } from 'services'
+
+export default () => {
+  const esms = new ESMS({
+    apiKey: '',
+    secretKey: '',
+  })
+}
