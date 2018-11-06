@@ -6,6 +6,7 @@
     "sourceMap": true,
     "module": "commonjs",
     "outDir": "lib",
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "lib": ["dom", "es6"]
   }
 }
