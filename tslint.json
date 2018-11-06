@@ -3,6 +3,13 @@
   "rules": {
     "no-console": {
       "severity": "warn"
+    },
+    "ordered-imports": {
+      "severity": "warn",
+      "options": {
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "case-insensitive"
+      }
     }
   }
 }

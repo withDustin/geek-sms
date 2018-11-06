@@ -1,9 +1,38 @@
+import * as loglevel from 'loglevel'
+
+export interface ServiceOptions {
+  /** Define loglevel for debugging. */
+  loglevel: loglevel.LogLevelDesc
+}
+
+/** The default value for `serviceOptions` when we don't pass it into constructor. */
+const DEFAULT_SERVICE_OPTIONS: Partial<ServiceOptions> = {
+  loglevel: 'silent',
+}
+
 class SMSService<AuthConfig> {
   authConfig: AuthConfig
+  serviceOptions: ServiceOptions
+  loglevel = loglevel
 
-  constructor(authConfig: AuthConfig, options?: any) {
+  constructor(
+    authConfig: AuthConfig,
+    serviceOptions: ServiceOptions = {
+      loglevel: 'silent',
+    },
+  ) {
     this.authConfig = authConfig
-    console.log(options)
+    this.serviceOptions = {
+      ...DEFAULT_SERVICE_OPTIONS,
+      ...serviceOptions,
+    }
+
+    this.loglevel.setLevel(this.serviceOptions.loglevel)
+  }
+
+  /** Overrides current `authConfig` by a new value. */
+  public setAuthConfig = (authConfig: AuthConfig) => {
+    this.authConfig = authConfig
   }
 }
 

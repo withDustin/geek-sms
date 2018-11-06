@@ -1,10 +1,16 @@
-import SMSService from 'services'
+import SMSService, { ServiceOptions } from 'services'
 
-interface ESMSAuth {
+export interface ESMSAuthConfig {
   apiKey: string
   secretKey: string
 }
 
-class ESMS extends SMSService<ESMSAuth> {}
+class ESMS extends SMSService<ESMSAuthConfig> {
+  constructor(authConfig: ESMSAuthConfig, serviceOptions?: ServiceOptions) {
+    super(authConfig, serviceOptions)
+
+    this.loglevel.info('eSMS service initialized')
+  }
+}
 
 export default ESMS
