@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "rootDir": "src",
+    "target": "es5",
+    "sourceMap": true,
+    "module": "commonjs",
+    "outDir": "lib",
+    "strictNullChecks": true,
+    "lib": ["dom", "es6"]
+  }
+}
