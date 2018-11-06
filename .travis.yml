@@ -14,6 +14,3 @@ script:
   - if [[ "$TRAVIS_PULL_REQUEST" == "true" ]]; then yarn build; fi
 
 after_script: yarn coveralls
-
-after_success:
-  - if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then yarn build && yarn publish; fi
