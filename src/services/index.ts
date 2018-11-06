@@ -13,7 +13,7 @@ const DEFAULT_SERVICE_OPTIONS: Partial<ServiceOptions> = {
 class SMSService<AuthConfig> {
   authConfig: AuthConfig
   serviceOptions: ServiceOptions
-  loglevel = loglevel
+  logger = loglevel
 
   constructor(
     authConfig: AuthConfig,
@@ -27,7 +27,7 @@ class SMSService<AuthConfig> {
       ...serviceOptions,
     }
 
-    this.loglevel.setLevel(this.serviceOptions.loglevel)
+    this.logger.setLevel(this.serviceOptions.loglevel)
   }
 
   /** Overrides current `authConfig` by a new value. */
@@ -37,6 +37,3 @@ class SMSService<AuthConfig> {
 }
 
 export default SMSService
-
-// Child-services exports
-export { default as ESMS } from './esms'

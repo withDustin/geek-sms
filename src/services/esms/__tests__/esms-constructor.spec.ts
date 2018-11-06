@@ -1,12 +1,11 @@
 // tslint:disable:no-console
 import * as Chance from 'chance'
 
-import { ESMS } from 'services'
-import { ESMSAuthConfig } from 'services/esms'
+import ESMS, { ESMSAuthConfig } from 'services/esms'
 
 const chance = new Chance()
 
-describe('eSMS service', () => {
+describe('eSMS constructoring', () => {
   let authConfig: ESMSAuthConfig = {
     apiKey: chance.string(),
     secretKey: chance.string(),
@@ -31,12 +30,12 @@ describe('eSMS service', () => {
   })
 
   it('default logLevel should be silent', () => {
-    expect(eSMS.loglevel.getLevel()).toBe(eSMS.loglevel.levels.SILENT)
+    expect(eSMS.logger.getLevel()).toBe(eSMS.logger.levels.SILENT)
   })
 
-  it('logLevel should be assigned correctly', () => {
-    const eSMS = new ESMS(authConfig, { loglevel: 'TRACE' })
+  it('logLevel should be assigned correctly to TRACE', () => {
+    const eSMS = new ESMS(authConfig, { loglevel: 'trace' })
 
-    expect(eSMS.loglevel.getLevel()).toBe(eSMS.loglevel.levels.TRACE)
+    expect(eSMS.logger.getLevel()).toBe(eSMS.logger.levels.TRACE)
   })
 })
