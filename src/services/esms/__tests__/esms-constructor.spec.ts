@@ -1,8 +1,10 @@
 // tslint:disable:no-console
 import * as Chance from 'chance'
 
+import ESMS from 'services/esms'
+import { ESMSAuthConfig } from 'services/esms/esms-interfaces'
+
 import { getConfig } from 'config'
-import ESMS, { ESMSAuthConfig } from 'services/esms'
 
 const chance = new Chance()
 const config = getConfig().services.eSMS

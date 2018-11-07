@@ -11,11 +11,18 @@ describe('eSMS API', async () => {
     esms = new ESMS(config, { loglevel: 'debug' })
   })
 
-  it('should check for balance OK', async () => {
+  it('getBalance() should resolve a number that greater than 0', async () => {
     expect.assertions(1)
 
     const balance = await esms.getBalance()
 
-    return expect(typeof balance).toBe('number')
+    return expect(balance).toBeGreaterThan(0)
+  })
+
+  it('getBrandNameList() should resolve a list of BrandName', async () => {
+    expect.assertions(1)
+
+    const brandNames = await esms.getBrandNameList()
+    return expect(brandNames).toBeDefined()
   })
 })
