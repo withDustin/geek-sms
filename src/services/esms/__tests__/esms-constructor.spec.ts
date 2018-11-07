@@ -9,8 +9,8 @@ const config = getConfig().services.eSMS
 
 describe('eSMS constructoring', () => {
   let authConfig: ESMSAuthConfig = {
-    apiKey: config.API_KEY,
-    secretKey: config.SECRET_KEY,
+    API_KEY: config.API_KEY,
+    SECRET_KEY: config.SECRET_KEY,
   }
 
   let eSMS: ESMS
@@ -23,8 +23,8 @@ describe('eSMS constructoring', () => {
 
   it('authConfig should be updated after ran setAuthConfig()', () => {
     authConfig = {
-      apiKey: chance.string(),
-      secretKey: chance.string(),
+      API_KEY: chance.string(),
+      SECRET_KEY: chance.string(),
     }
 
     eSMS.setAuthConfig(authConfig)
