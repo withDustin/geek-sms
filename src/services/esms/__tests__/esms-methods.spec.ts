@@ -36,7 +36,7 @@ describe('eSMS getBrandNameList()', async () => {
 
     const brandNames = await esms.getBrandNameList()
 
-    expect(brandNames!.length).toBeGreaterThan(0)
+    expect(brandNames.length).toBeGreaterThan(0)
   })
 
   it('should throw correct error message if authConfig is wrong', async () => {
