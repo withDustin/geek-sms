@@ -3,11 +3,14 @@ export interface ESMSAuthConfig {
   SECRET_KEY: string
 }
 
-export interface ESMSGetBalanceResponse {
-  Balance: number
+export interface ESMSResponse {
   CodeResponse: string
-  UserID: number
   ErrorMessage?: string
+}
+
+export interface ESMSGetBalanceResponse extends ESMSResponse {
+  Balance: number
+  UserID: number
 }
 
 export interface ESMSBrandName {
@@ -15,7 +18,6 @@ export interface ESMSBrandName {
   Type: 1 | 2
 }
 
-export interface ESMSGetBrandNameListResponse {
-  CodeResponse: string
+export interface ESMSGetBrandNameListResponse extends ESMSResponse {
   ListBrandName: ESMSBrandName[]
 }

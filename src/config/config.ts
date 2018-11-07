@@ -1,13 +1,10 @@
-import * as Chance from 'chance'
 import { merge } from 'lodash'
-
-const chance = new Chance()
 
 const config = {
   services: {
     eSMS: {
-      API_KEY: chance.string(),
-      SECRET_KEY: chance.string(),
+      API_KEY: '__SUCCESS_API_KEY__',
+      SECRET_KEY: '__SUCCESS_SECRET_KEY__',
     },
   },
 }

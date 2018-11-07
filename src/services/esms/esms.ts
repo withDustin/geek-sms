@@ -83,6 +83,8 @@ class ESMS extends SMSService<ESMSAuthConfig> {
 
         return brandNames
       }
+
+      throw new Error(ERROR_CODES[data.CodeResponse] || data.ErrorMessage)
     } catch (error) {
       this.logger.error(error)
       return Promise.reject(error)
