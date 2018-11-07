@@ -5,6 +5,8 @@ export interface ServiceOptions {
   loglevel: loglevel.LogLevelDesc
 }
 
+export type SupportedServices = 'esms'
+
 /** The default value for `serviceOptions` when we don't pass it into constructor. */
 const DEFAULT_SERVICE_OPTIONS: Partial<ServiceOptions> = {
   loglevel: 'silent',

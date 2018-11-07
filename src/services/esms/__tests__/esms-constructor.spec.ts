@@ -1,14 +1,16 @@
 // tslint:disable:no-console
 import * as Chance from 'chance'
 
+import { getConfig } from 'config'
 import ESMS, { ESMSAuthConfig } from 'services/esms'
 
 const chance = new Chance()
+const config = getConfig().services.eSMS
 
 describe('eSMS constructoring', () => {
   let authConfig: ESMSAuthConfig = {
-    apiKey: chance.string(),
-    secretKey: chance.string(),
+    apiKey: config.API_KEY,
+    secretKey: config.SECRET_KEY,
   }
 
   let eSMS: ESMS
