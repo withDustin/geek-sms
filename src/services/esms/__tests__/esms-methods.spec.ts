@@ -1,6 +1,8 @@
 import ESMS from 'services/esms'
 
 import { getConfig } from 'config'
+import { ERROR_CODES } from 'constants/esms'
+import { ESMSSendMessageArgs } from '../esms-interfaces'
 
 jest.mock('axios')
 
@@ -47,7 +49,52 @@ describe('eSMS getBrandNameList()', async () => {
     expect.assertions(1)
 
     await expect(esms.getBrandNameList()).rejects.toEqual(
-      new Error('Authentication failed. Incorrect API_KEY nor SECRET_KEY.'),
+      new Error(ERROR_CODES['101']),
     )
+  })
+})
+
+describe('eSMS sendMessage()', async () => {
+  it('should send SMS properly', async () => {
+    const esms = new ESMS(config)
+    expect.assertions(1)
+
+    const messageInfo: ESMSSendMessageArgs = {
+      phone: '0979477635',
+      message: 'Test message jest',
+      type: 2,
+      brandName: 'STORELAMMOC',
+      sandBox: true,
+    }
+
+    await expect(esms.sendMessage(messageInfo)).resolves.toBeDefined()
+  })
+
+  it('should throw error when phone number is invalid', async () => {
+    const esms = new ESMS(config)
+    expect.assertions(1)
+
+    const messageInfo: ESMSSendMessageArgs = {
+      phone: '0979477XXX',
+      message: 'Test message jest',
+      type: 2,
+      brandName: 'STORELAMMOC',
+      sandBox: true,
+    }
+
+    await expect(esms.sendMessage(messageInfo)).rejects.toBeDefined()
+  })
+
+  it('should throw correct error message if brand name is undefined', async () => {
+    const esms = new ESMS(config)
+    expect.assertions(1)
+
+    await expect(
+      esms.sendMessage({
+        phone: '0979477635',
+        message: 'Test message jest',
+        type: 2,
+      }),
+    ).rejects.toEqual(new Error(ERROR_CODES['104']))
   })
 })

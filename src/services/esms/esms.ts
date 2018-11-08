@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { stringify } from 'querystring'
 
 import SMSService, { ServiceOptions } from 'services'
 
@@ -8,6 +9,8 @@ import {
   ESMSAuthConfig,
   ESMSGetBalanceResponse,
   ESMSGetBrandNameListResponse,
+  ESMSSendMessageArgs,
+  ESMSSendMessageResponse,
 } from './esms-interfaces'
 
 /**
@@ -67,7 +70,7 @@ class ESMS extends SMSService<ESMSAuthConfig> {
       )).data
 
       if (data.CodeResponse === '100') {
-        const brandNames = data.ListBrandName.map(
+        const brandNames = data.ListBrandName!.map(
           (brandName): BrandName => ({
             name: brandName.Brandname,
             type: brandName.Type,
@@ -91,12 +94,50 @@ class ESMS extends SMSService<ESMSAuthConfig> {
     }
   }
 
-  public sendMessage = () => {
+  public sendMessage = async (messageInfo: ESMSSendMessageArgs) => {
     /** API template:
      * http://rest.esms.vn/MainService.svc/json/SendMultipleMessage_V4_get?
      * Phone={Phone}&Content={Content}&ApiKey={ApiKey}&SecretKey={SecretKey}
      * &IsUnicode={IsUnicode}&Brandname={Brandname}&SmsType={SmsType}
      */
+
+    try {
+      const { API_KEY, SECRET_KEY } = this.authConfig
+      const messageData = {
+        Phone: messageInfo.phone,
+        Content: messageInfo.message,
+        SmsType: messageInfo.type,
+        IsUnicode: messageInfo.unicode || 0,
+        Brandname: messageInfo.brandName,
+        Sandbox: messageInfo.sandBox === true ? 1 : 0,
+        ApiKey: API_KEY,
+        SecretKey: SECRET_KEY,
+      }
+
+      const sendMessageURL = `${BASE_URL}/SendMultipleMessage_V4_get?${stringify(
+        messageData,
+      )}`
+
+      this.logger.debug(`Sending message by GET`, sendMessageURL)
+
+      const data: ESMSSendMessageResponse = (await axios.get(sendMessageURL))
+        .data
+
+      if (data.CodeResult === '100') {
+        const message = {
+          id: data.SMSID,
+          ...messageInfo,
+        }
+        return message
+      }
+
+      this.logger.debug({ data })
+
+      throw new Error(ERROR_CODES[data.CodeResult] || data.ErrorMessage)
+    } catch (error) {
+      this.logger.error(error)
+      return Promise.reject(error)
+    }
   }
 }
 
