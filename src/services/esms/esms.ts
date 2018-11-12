@@ -128,6 +128,9 @@ class ESMS extends SMSService<ESMSAuthConfig> {
           id: data.SMSID,
           ...messageInfo,
         }
+
+        this.logger.debug('Message sent successfully', message)
+
         return message
       }
 
