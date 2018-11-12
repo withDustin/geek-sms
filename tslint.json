@@ -11,5 +11,8 @@
         "named-imports-order": "case-insensitive"
       }
     }
+  },
+  "linterOptions": {
+    "exclude": ["lib"]
   }
 }

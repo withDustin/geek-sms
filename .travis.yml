@@ -10,6 +10,7 @@ script:
   - yarn test
   - if [[ "$TRAVIS_PULL_REQUEST" == "true" ]]; then yarn build; fi
 deploy:
+  provider: npm
   on:
     tags: true
     branch: master
