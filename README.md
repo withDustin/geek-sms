@@ -1,1 +1,6 @@
+[![dependencies Status](https://david-dm.org/Targeek/geek-sms/status.svg)](https://david-dm.org/Targeek/geek-sms)
+[![devDependencies Status](https://david-dm.org/Targeek/geek-sms/dev-status.svg)](https://david-dm.org/Targeek/geek-sms?type=dev)
+![GeekSMS](https://img.shields.io/github/license/Targeek/geek-sms.svg)
 [![Coverage Status](https://coveralls.io/repos/github/Targeek/geek-sms/badge.svg)](https://coveralls.io/github/Targeek/geek-sms) [![Build Status](https://travis-ci.org/Targeek/geek-sms.svg?branch=master)](https://travis-ci.org/Targeek/geek-sms)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+![npm type definitions](https://img.shields.io/npm/types/chalk.svg)

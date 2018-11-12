@@ -1,8 +1,8 @@
 {
   "name": "geek-sms",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "SMS SDK for Javascript",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Targeek/geek-sms"
@@ -16,6 +16,11 @@
     "cover": "jest --coverage",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "tslint --project tsconfig.json --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\""
+  },
+  "_moduleAliases": {
+    "services": "lib/services",
+    "constants": "lib/constants",
+    "types": "lib/types"
   },
   "devDependencies": {
     "@types/chance": "^1.0.1",
@@ -31,6 +36,7 @@
     "lint-staged": "^8.0.4",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",
+    "standard-version": "^4.4.0",
     "ts-jest": "^23.10.4",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
@@ -51,6 +57,7 @@
     "axios": "^0.18.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.1",
-    "loglevel": "^1.6.1"
+    "loglevel": "^1.6.1",
+    "module-alias": "^2.1.0"
   }
 }

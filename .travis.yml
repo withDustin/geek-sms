@@ -1,16 +1,19 @@
 language: node_js
 node_js: '8'
-
 cache:
   directories:
     - node_modules
-
 install:
   - yarn install
-
 script:
   - yarn lint
   - yarn test
   - if [[ "$TRAVIS_PULL_REQUEST" == "true" ]]; then yarn build; fi
-
-after_script: yarn coveralls
+deploy:
+  on:
+    tags: true
+    branch: master
+  email: duong@targeek.io
+  api_key:
+    secure: bm1qH600U8y4e+5lY+M7bY57nLRzydk1FSn7rMET24Ob1aVokxxP4/RzW35t76SIMkuFmm332W8n+EFJ0OIUsOBjfofyQ9ak0W/jsfeYk0knvc2s6VmC/5Q3YS1k0GODpCVyDNMA06MqLj1rMvuXTleZ2U62bIMzg0uiPI85osQtx6e2sEKma0JKZnFrDyiAv6BjqmCsMV4YC0YD1ml/6tmu0/H1RJwMPuV57nPmF4+IZH9H1QHzqdrcNO4m6h4P5NC3MBHJ/hq+f5FuO9PUl1nFqhxNPMDB1p36GQ4Dtna944KriwyU+v4QOGeSlhOsCSTVk8nIe0eKzZ+X75bu2oc7Z0f38MGlB4jv09RoiV/f2G2xtsGiokby3gMHrjnUZ33TPbNkX5LVYtJQS3DAb99boozO2FxAaEIK1NeMw95XCocgYojd2Ao5vqgZeEOgYpXr42qRdjok4dfULpHUeEiX9ESGCrOk7tJsTfrsS35eRvtN+OAkClVW50YBv9sVWs6OOaUF324748filaA3nN6YlqZGB12EuUadpGnz/rJpocBVw8Z/+NrawvcSImBwtTDZ144Ou13YKBO6m7DcZ81Uoka+s8mbIHM3GkO6Bf2qj5lxVpkH3VCM7eC/JGkfQz8l1RtO/9GKiTT530TWkTpyzLQ8NoxRiywiVF9fVNA=
+after_success: yarn coveralls
