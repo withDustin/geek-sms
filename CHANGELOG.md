@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.7"></a>
+## [0.0.7](https://github.com/Targeek/geek-sms/compare/v0.0.6...v0.0.7) (2018-11-12)
+
+
+### Bug Fixes
+
+* **TravisCI:** Add missing `deploy.provider` ([9d99b5a](https://github.com/Targeek/geek-sms/commit/9d99b5a))
+
+
+
 <a name="0.0.6"></a>
 ## 0.0.6 (2018-11-12)
 
