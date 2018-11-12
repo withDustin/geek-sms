@@ -1,6 +1,5 @@
-# Build output
-src/config/config\.local\.ts
-lib
+# development source code
+src
 
 # Logs
 logs
