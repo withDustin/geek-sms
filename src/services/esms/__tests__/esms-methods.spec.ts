@@ -1,7 +1,7 @@
-import ESMS from 'services/esms'
+import ESMS from '../esms'
 
-import { getConfig } from 'config'
-import { ERROR_CODES } from 'constants/esms'
+import { getConfig } from '../../../config'
+import { ERROR_CODES } from '../../../constants/esms'
 import { ESMSSendMessageArgs } from '../esms-interfaces'
 
 jest.mock('axios')

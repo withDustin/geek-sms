@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { stringify } from 'querystring'
 
-import SMSService, { ServiceOptions } from 'services'
+import SMSService, { ServiceOptions } from '../index'
 
-import { BASE_URL, BRAND_NAME_TYPES, ERROR_CODES } from 'constants/esms'
-import { BrandName } from 'types/brand-name'
+import { BASE_URL, BRAND_NAME_TYPES, ERROR_CODES } from '../../constants/esms'
+import { BrandName } from '../../types/brand-name'
 import {
   ESMSAuthConfig,
   ESMSGetBalanceResponse,
