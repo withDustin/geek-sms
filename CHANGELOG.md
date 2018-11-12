@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.8"></a>
+## [0.0.8](https://github.com/Targeek/geek-sms/compare/v0.0.7...v0.0.8) (2018-11-12)
+
+
+### Bug Fixes
+
+* **TravisCI:** Remove `deploy.on.branch` ([04c5250](https://github.com/Targeek/geek-sms/commit/04c5250))
+* Remove `module-alias` and use relative path ([f2af25a](https://github.com/Targeek/geek-sms/commit/f2af25a))
+
+
+
 <a name="0.0.7"></a>
 ## [0.0.7](https://github.com/Targeek/geek-sms/compare/v0.0.6...v0.0.7) (2018-11-12)
 
