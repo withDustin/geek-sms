@@ -62,3 +62,11 @@ typings/
 
 # next.js build output
 .next
+
+.gitignore
+.prettierignore
+.prettierrc
+.travis.yml
+jest.config.js
+tsconfig.*
+tslint.json
