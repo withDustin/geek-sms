@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.13"></a>
+## [0.0.13](https://github.com/Targeek/geek-sms/compare/v0.0.12...v0.0.13) (2018-11-12)
+
+
+### Features
+
+* **eSMS:** Add `requestId` on `sendMessage` method ([81c757d](https://github.com/Targeek/geek-sms/commit/81c757d))
+* **eSMS:** Add debug message when send message successfully ([b127dab](https://github.com/Targeek/geek-sms/commit/b127dab))
+
+
+
 <a name="0.0.12"></a>
 ## [0.0.12](https://github.com/Targeek/geek-sms/compare/v0.0.11...v0.0.12) (2018-11-12)
 
