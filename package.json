@@ -15,7 +15,8 @@
     "test:watch": "jest --watchAll",
     "cover": "jest --coverage",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
-    "lint": "tslint --project tsconfig.json --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\""
+    "lint": "tslint --project tsconfig.json --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\"",
+    "release": "standard-version"
   },
   "_moduleAliases": {
     "services": "lib/services",
