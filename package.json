@@ -18,11 +18,6 @@
     "lint": "tslint --project tsconfig.json --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\"",
     "release": "standard-version"
   },
-  "_moduleAliases": {
-    "services": "lib/services",
-    "constants": "lib/constants",
-    "types": "lib/types"
-  },
   "devDependencies": {
     "@types/chance": "^1.0.1",
     "@types/jest": "^23.3.9",
@@ -58,7 +53,6 @@
     "axios": "^0.18.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.1",
-    "loglevel": "^1.6.1",
-    "module-alias": "^2.1.0"
+    "loglevel": "^1.6.1"
   }
 }
