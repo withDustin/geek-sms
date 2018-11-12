@@ -109,6 +109,7 @@ class ESMS extends SMSService<ESMSAuthConfig> {
         SmsType: messageInfo.type,
         IsUnicode: messageInfo.unicode || 0,
         Brandname: messageInfo.brandName,
+        RequestId: messageInfo.requestId,
         Sandbox: messageInfo.sandBox === true ? 1 : 0,
         ApiKey: API_KEY,
         SecretKey: SECRET_KEY,
