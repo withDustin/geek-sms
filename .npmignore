@@ -70,3 +70,6 @@ typings/
 jest.config.js
 tsconfig.*
 tslint.json
+.coveralls.yml
+yarn.lock
+.vscode
