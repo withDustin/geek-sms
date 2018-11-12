@@ -3,12 +3,13 @@ node_js: '8'
 cache:
   directories:
     - node_modules
+if: tag IS blank
 install:
   - yarn install
 script:
   - yarn lint
   - yarn test
-  - if [[ "$TRAVIS_PULL_REQUEST" == "true" ]]; then yarn build; fi
+before_deploy: 'yarn build'
 deploy:
   provider: npm
   on:

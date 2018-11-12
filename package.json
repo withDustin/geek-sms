@@ -10,14 +10,14 @@
   "author": "Dương Đỗ <duong@targeek.io>",
   "license": "MIT",
   "scripts": {
-    "prebuild": "rimraf lib && npm run lint && npm run test",
+    "prebuild": "rimraf lib",
     "build": "tsc -p tsconfig.build.json",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "cover": "jest --coverage",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "tslint --project tsconfig.json --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\"",
-    "prerelease": "npm run build",
+    "prerelease": "npm run test && npm run build",
     "release": "standard-version"
   },
   "devDependencies": {
