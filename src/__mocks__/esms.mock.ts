@@ -58,7 +58,7 @@ export const eSMSMockAPI = async (url: string) => {
   // Calls sendMessage() with good data
   if (
     url ===
-    'http://rest.esms.vn/MainService.svc/json/SendMultipleMessage_V4_get?Phone=0979477635&Content=Test%20message%20jest&SmsType=2&IsUnicode=0&Brandname=STORELAMMOC&RequestId=&Sandbox=1&ApiKey=__SUCCESS_API_KEY__&SecretKey=__SUCCESS_SECRET_KEY__'
+    `${BASE_URL}/SendMultipleMessage_V4_get?Phone=0979477635&Content=Test%20message%20jest&SmsType=2&IsUnicode=0&Brandname=STORELAMMOC&RequestId=&Sandbox=1&ApiKey=__SUCCESS_API_KEY__&SecretKey=__SUCCESS_SECRET_KEY__`
   ) {
     return {
       data: {
@@ -72,7 +72,7 @@ export const eSMSMockAPI = async (url: string) => {
   // Calls sendMessage() with empty brand name
   if (
     url ===
-    'http://rest.esms.vn/MainService.svc/json/SendMultipleMessage_V4_get?Phone=0979477635&Content=Test%20message%20jest&SmsType=2&IsUnicode=0&Brandname=&RequestId=&Sandbox=0&ApiKey=__SUCCESS_API_KEY__&SecretKey=__SUCCESS_SECRET_KEY__'
+    `${BASE_URL}/SendMultipleMessage_V4_get?Phone=0979477635&Content=Test%20message%20jest&SmsType=2&IsUnicode=0&Brandname=&RequestId=&Sandbox=0&ApiKey=__SUCCESS_API_KEY__&SecretKey=__SUCCESS_SECRET_KEY__`
   ) {
     return {
       data: {

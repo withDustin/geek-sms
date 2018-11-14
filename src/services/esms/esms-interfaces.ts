@@ -1,6 +1,13 @@
+import { ServiceOptions } from 'services'
+
 export interface ESMSAuthConfig {
   API_KEY: string
   SECRET_KEY: string
+}
+
+export interface ESMSServiceOptions extends ServiceOptions {
+  baseUrl?: string
+  useHttp?: boolean
 }
 
 export interface ESMSResponse {

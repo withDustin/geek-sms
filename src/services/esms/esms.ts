@@ -1,24 +1,40 @@
 import axios from 'axios'
 import { stringify } from 'querystring'
 
-import SMSService, { ServiceOptions } from '../index'
+import SMSService from '../index'
 
-import { BASE_URL, BRAND_NAME_TYPES, ERROR_CODES } from '../../constants/esms'
-import { BrandName } from '../../types/brand-name'
+import {
+  BASE_URL,
+  BASE_URL_HTTP,
+  BASE_URL_HTTPS,
+  BRAND_NAME_TYPES,
+  ERROR_CODES,
+} from '../../constants/esms'
+import { BrandName } from '../../interfaces/brand-name'
 import {
   ESMSAuthConfig,
   ESMSGetBalanceResponse,
   ESMSGetBrandNameListResponse,
   ESMSSendMessageArgs,
   ESMSSendMessageResponse,
+  ESMSServiceOptions,
 } from './esms-interfaces'
 
 /**
  * @see Documentation at https://drive.google.com/file/d/0ByZdl9Zt3D_fbWFkQ3pHc0I3Q0xSelAxMjFXWXRtTWdETGVr/view
  */
 class ESMS extends SMSService<ESMSAuthConfig> {
-  constructor(authConfig: ESMSAuthConfig, serviceOptions?: ServiceOptions) {
+  BASE_URL = BASE_URL
+  constructor(
+    authConfig: ESMSAuthConfig,
+    serviceOptions: ESMSServiceOptions = { loglevel: 'silent' },
+  ) {
     super(authConfig, serviceOptions)
+
+    if (serviceOptions.baseUrl) this.BASE_URL = serviceOptions.baseUrl
+    else {
+      this.BASE_URL = serviceOptions.useHttp ? BASE_URL_HTTP : BASE_URL_HTTPS
+    }
 
     this.logger.info('eSMS service initialized with', authConfig)
   }
@@ -29,7 +45,7 @@ class ESMS extends SMSService<ESMSAuthConfig> {
      */
 
     const { API_KEY, SECRET_KEY } = this.authConfig
-    const getBalanceURL = `${BASE_URL}/GetBalance/${API_KEY}/${SECRET_KEY}`
+    const getBalanceURL = `${this.BASE_URL}/GetBalance/${API_KEY}/${SECRET_KEY}`
 
     this.logger.debug(`Getting eSMS balance by GET ${getBalanceURL}`)
 
@@ -58,7 +74,9 @@ class ESMS extends SMSService<ESMSAuthConfig> {
      */
 
     const { API_KEY, SECRET_KEY } = this.authConfig
-    const getBrandNameListURL = `${BASE_URL}/GetListBrandname/${API_KEY}/${SECRET_KEY}`
+    const getBrandNameListURL = `${
+      this.BASE_URL
+    }/GetListBrandname/${API_KEY}/${SECRET_KEY}`
 
     this.logger.debug(
       `Getting eSMS brand name list by GET ${getBrandNameListURL}`,
@@ -115,9 +133,9 @@ class ESMS extends SMSService<ESMSAuthConfig> {
         SecretKey: SECRET_KEY,
       }
 
-      const sendMessageURL = `${BASE_URL}/SendMultipleMessage_V4_get?${stringify(
-        messageData,
-      )}`
+      const sendMessageURL = `${
+        this.BASE_URL
+      }/SendMultipleMessage_V4_get?${stringify(messageData)}`
 
       this.logger.debug(`Sending message by GET`, sendMessageURL)
 

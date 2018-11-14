@@ -1,4 +1,6 @@
-export const BASE_URL = 'http://rest.esms.vn/MainService.svc/json'
+export const BASE_URL_HTTP = 'http://rest.esms.vn/MainService.svc/json'
+export const BASE_URL_HTTPS = 'https://restapi.esms.vn/MainService.svc/json'
+export const BASE_URL = BASE_URL_HTTPS
 export const ERROR_CODES = {
   // 99: 'Something went wrong. Please try again.',
   100: 'Request succeeded.',
@@ -14,6 +16,7 @@ export const BRAND_NAME_TYPES = {
 }
 
 export default {
-  BASE_URL,
+  BASE_URL: BASE_URL_HTTPS,
+  BASE_URL_HTTP,
   ERROR_CODES,
 }
