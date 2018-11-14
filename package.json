@@ -1,6 +1,6 @@
 {
   "name": "geek-sms",
-  "version": "0.0.13",
+  "version": "1.0.0",
   "description": "SMS SDK for Javascript",
   "main": "lib/index.js",
   "repository": {
