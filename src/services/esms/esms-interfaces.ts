@@ -44,6 +44,7 @@ export interface ESMSSendMessageArgs {
   unicode?: 0 | 1
   brandName?: string
   sandBox?: boolean
+  requestId?: string
 }
 
 export interface ESMSSendMessageResponse extends ESMSResponse {

@@ -1,8 +1,8 @@
 // tslint:disable:no-console
 import * as Chance from 'chance'
 
-import ESMS from 'services/esms'
-import { ESMSAuthConfig } from 'services/esms/esms-interfaces'
+import ESMS from '../../esms'
+import { ESMSAuthConfig } from '../esms-interfaces'
 
 import { getConfig } from 'config'
 

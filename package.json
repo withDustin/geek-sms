@@ -1,6 +1,6 @@
 {
   "name": "geek-sms",
-  "version": "0.0.7",
+  "version": "0.0.13",
   "description": "SMS SDK for Javascript",
   "main": "lib/index.js",
   "repository": {
@@ -10,18 +10,15 @@
   "author": "Dương Đỗ <duong@targeek.io>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf lib && tsc -p tsconfig.build.json",
+    "prebuild": "rimraf lib",
+    "build": "tsc -p tsconfig.build.json",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "cover": "jest --coverage",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "tslint --project tsconfig.json --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\"",
+    "prerelease": "npm run test && npm run build",
     "release": "standard-version"
-  },
-  "_moduleAliases": {
-    "services": "lib/services",
-    "constants": "lib/constants",
-    "types": "lib/types"
   },
   "devDependencies": {
     "@types/chance": "^1.0.1",
@@ -58,7 +55,6 @@
     "axios": "^0.18.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.1",
-    "loglevel": "^1.6.1",
-    "module-alias": "^2.1.0"
+    "loglevel": "^1.6.1"
   }
 }

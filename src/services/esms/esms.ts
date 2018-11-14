@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { stringify } from 'querystring'
 
-import SMSService, { ServiceOptions } from 'services'
+import SMSService, { ServiceOptions } from '../index'
 
-import { BASE_URL, BRAND_NAME_TYPES, ERROR_CODES } from 'constants/esms'
-import { BrandName } from 'types/brand-name'
+import { BASE_URL, BRAND_NAME_TYPES, ERROR_CODES } from '../../constants/esms'
+import { BrandName } from '../../types/brand-name'
 import {
   ESMSAuthConfig,
   ESMSGetBalanceResponse,
@@ -109,6 +109,7 @@ class ESMS extends SMSService<ESMSAuthConfig> {
         SmsType: messageInfo.type,
         IsUnicode: messageInfo.unicode || 0,
         Brandname: messageInfo.brandName,
+        RequestId: messageInfo.requestId,
         Sandbox: messageInfo.sandBox === true ? 1 : 0,
         ApiKey: API_KEY,
         SecretKey: SECRET_KEY,
@@ -128,6 +129,9 @@ class ESMS extends SMSService<ESMSAuthConfig> {
           id: data.SMSID,
           ...messageInfo,
         }
+
+        this.logger.debug('Message sent successfully', message)
+
         return message
       }
 
