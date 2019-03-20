@@ -27,7 +27,7 @@
     "@types/jest": "23.3.9",
     "@types/lodash.get": "4.4.6",
     "@types/lodash.merge": "4.6.4",
-    "@types/loglevel": "1.5.3",
+    "@types/loglevel": "1.5.4",
     "@types/node": "10.12.7",
     "chance": "1.0.16",
     "coveralls": "3.0.2",
