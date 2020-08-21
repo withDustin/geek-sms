@@ -21,8 +21,8 @@
     "release": "standard-version"
   },
   "devDependencies": {
-    "@commitlint/cli": "7.5.2",
-    "@commitlint/config-conventional": "7.5.0",
+    "@commitlint/cli": "9.1.2",
+    "@commitlint/config-conventional": "9.1.2",
     "@types/chance": "1.0.1",
     "@types/jest": "23.3.9",
     "@types/lodash.get": "4.4.6",
